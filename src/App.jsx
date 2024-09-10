@@ -79,7 +79,7 @@ function App() {
       <CssBaseline />
       <GradientBackground>
         <FloatingLogo
-          src='/16.svg'
+          src='./16.svg'
           style={{
             top: '10%',
             left: '5%',
@@ -88,7 +88,7 @@ function App() {
           }}
         />
         <FloatingLogo
-          src='/16.svg'
+          src='./16.svg'
           style={{
             top: '30%',
             right: '10%',
@@ -98,7 +98,7 @@ function App() {
           }}
         />
         <FloatingLogo
-          src='/16.svg'
+          src='./16.svg'
           style={{
             bottom: '15%',
             left: '15%',
