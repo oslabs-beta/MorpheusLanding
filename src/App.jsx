@@ -12,6 +12,7 @@ import { styled, keyframes } from '@mui/system';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { alpha } from '@mui/material/styles';
+// import { useRef } from 'react';
 
 const theme = createTheme({
   typography: {
@@ -46,7 +47,7 @@ const GlassyBox = styled(Paper)(({ theme }) => ({
 }));
 
 const GradientBackground = styled(Box)({
-  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  background: 'linear-gradient(-45deg, #FE6B8B 30%, #FF8E53 90%)',
   minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
@@ -74,6 +75,17 @@ const FloatingLogo = styled('img')({
 });
 
 function App() {
+  // const demoRef = useRef(null);
+
+  // const scrollToDemo = (event) => {
+  //   event.preventDefault();
+  //   const yOffset = -80; // Adjust this value based on your navbar height
+  //   const element = demoRef.current;
+  //   const y =
+  //     element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  //   window.scrollTo({ top: y, behavior: 'smooth' });
+  // };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -112,72 +124,86 @@ function App() {
             <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
               morpheus
             </Typography>
+            <Button color='inherit' href='#'>
+              Home
+            </Button>
+            <Button color='inherit' href='#demo'>
+              Demo
+            </Button>
             <Button color='inherit' href='#about'>
               About
             </Button>
           </Toolbar>
         </TransparentAppBar>
 
-        <Container maxWidth='md' sx={{ mt: 8, mb: 8 }}>
+        <Container maxWidth='lg' sx={{ mt: 14, mb: 11 }}>
+          {/* <GlassyBox> */}
+          <Typography variant='h1' component='h1' gutterBottom>
+            {/* Chrysalis to Clarity <br /> */}
+            AI-enhanced container observability
+          </Typography>
+          <Typography variant='h4' component='h2' gutterBottom>
+            Transform your Docker and Kubernetes workflow with Morpheus.
+          </Typography>
+          <Typography variant='body1' paragraph>
+            This intuitive observability and management tool allow you to
+            effortlessly monitor essential container metrics on a sleek
+            dashboard, and manage containers with easy one-click actions.
+            Visualize Kubernetes clusters with intuitive graphics. Unlock
+            advanced analysis with optional AI interactions powered by AWS
+            Bedrock and OpenAI models of your choice, transforming insights into
+            actionable intelligence.
+          </Typography>
+          <Button variant='contained' color='primary' size='large'>
+            Get Started
+          </Button>
+          {/* </GlassyBox> */}
+        </Container>
+
+        {/* placeholder for demo */}
+        <Container
+          Container
+          id='demo'
+          maxWidth='md'
+          sx={{ mb: 5, scrollMarginTop: '80px' }}
+        >
           <GlassyBox>
-            <Typography variant='h2' component='h1' gutterBottom>
-              AI enhanced container observability
-            </Typography>
             <Typography variant='h5' component='h2' gutterBottom>
-              Empower your development workflow
+              Demo Feature 1
             </Typography>
             <Typography variant='body1' paragraph>
-              DevTool is a powerful suite of utilities designed to streamline
-              your development process.
-            </Typography>
-            <Button variant='contained' color='primary' size='large'>
-              Get Started
-            </Button>
-          </GlassyBox>
-        </Container>
-
-        {/* placeholder for demo */}
-        <Container maxWidth='md' sx={{ mb: 8 }}>
-          <GlassyBox>
-            <Typography variant='h4' component='h2' gutterBottom>
-              Placeholder Container 1
-            </Typography>
-            <Typography variant='body1' paragraph>
-              This is a placeholder for additional content. You can replace this
-              with any information or components you'd like to display.
+              This is a placeholder for additional content.
             </Typography>
           </GlassyBox>
         </Container>
 
         {/* placeholder for demo */}
-        <Container maxWidth='md' sx={{ mb: 8 }}>
+        <Container maxWidth='md' sx={{ mb: 5 }}>
           <GlassyBox>
-            <Typography variant='h4' component='h2' gutterBottom>
-              Placeholder Container 2
+            <Typography variant='h5' component='h2' gutterBottom>
+              Demo Feature 2
             </Typography>
             <Typography variant='body1' paragraph>
-              This is another placeholder for additional content. Feel free to
-              customize this section as needed.
+              This is another placeholder for additional content.
             </Typography>
           </GlassyBox>
         </Container>
 
         {/* placeholder for demo */}
-        <Container maxWidth='md' sx={{ mb: 8 }}>
+        <Container maxWidth='md' sx={{ mb: 5 }}>
           <GlassyBox>
-            <Typography variant='h4' component='h2' gutterBottom>
-              Placeholder Container 3
+            <Typography variant='h5' component='h2' gutterBottom>
+              Demo Feature 3
             </Typography>
             <Typography variant='body1' paragraph>
-              This is another placeholder for additional content. Feel free to
-              customize this section as needed.
+              This is another placeholder for additional content.
             </Typography>
           </GlassyBox>
         </Container>
 
         <Box flexGrow={1} />
 
-        <Container maxWidth='md' sx={{ mb: 8 }}>
+        <Container maxWidth='md' sx={{ mt: 5, mb: 8 }}>
           <GlassyBox id='about'>
             <Typography variant='h4' component='h2' gutterBottom>
               About DevTool
