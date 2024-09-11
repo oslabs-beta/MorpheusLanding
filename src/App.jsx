@@ -14,9 +14,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { alpha } from '@mui/material/styles';
 import Developer, { developers } from './components/Developer';
+import Demos from './components/Demos';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Logo from './assets/4.svg'; // Floating logo
+import Logo from './assets/12.svg'; // Floating logo
 import LogoWithText from './assets/11.svg'; // Nav bar logo with text
 
 const theme = createTheme({
@@ -77,7 +78,7 @@ const float = keyframes`
 
 const FloatingLogo = styled('img')({
   position: 'absolute',
-  opacity: 0.6,
+  opacity: 0.5,
   animation: `${float} 8s infinite ease-in-out`,
   transition: 'all 0.3s ease-in-out',
   '&:hover': {
@@ -108,7 +109,7 @@ function App() {
         <FloatingLogo
           src={Logo}
           style={{
-            top: '10%',
+            top: '2%',
             right: '10%',
             width: '100px',
             animationDuration: '21s',
@@ -118,8 +119,8 @@ function App() {
         <FloatingLogo
           src={Logo}
           style={{
-            top: '20%',
-            left: '5%',
+            top: '7%',
+            left: '7%',
             width: '90px',
             animationDuration: '17s',
           }}
@@ -169,20 +170,24 @@ function App() {
             </Box>
 
             <Box sx={{ flexGrow: 1 }} />
-            <Button color='inherit' href='#' sx={{ fontSize: '1.1rem', mx: 1 }}>
+            <Button
+              color='inherit'
+              href='#'
+              sx={{ fontSize: '1.1rem', mx: 1, color: '#004aad' }}
+            >
               Home
             </Button>
             <Button
               color='inherit'
               href='#features'
-              sx={{ fontSize: '1.1rem', mx: 1 }}
+              sx={{ fontSize: '1.1rem', mx: 1, color: '#004aad' }}
             >
               Features
             </Button>
             <Button
               color='inherit'
               href='#team'
-              sx={{ fontSize: '1.1rem', mx: 1 }}
+              sx={{ fontSize: '1.1rem', mx: 1, color: '#004aad' }}
             >
               Team
             </Button>
@@ -192,7 +197,7 @@ function App() {
               href='https://github.com/oslabs-beta/Morpheus'
               target='_blank'
               rel='noopener noreferrer'
-              sx={{ ml: 1.5 }}
+              sx={{ ml: 1.5, color: '#004aad' }}
             >
               <GitHubIcon />
             </IconButton>
@@ -201,7 +206,7 @@ function App() {
               href='#' // Temporary Morpheus LinkedIn placeholder ---------------------------------------------------------------------------------------
               target='_blank'
               rel='noopener noreferrer'
-              sx={{ ml: 2.5, mr: 1.5 }}
+              sx={{ ml: 2.5, mr: 1.5, color: '#004aad' }}
             >
               <LinkedInIcon />
             </IconButton>
@@ -417,6 +422,32 @@ function App() {
             </Box>
           </AnimatedContainer>
         </Container>
+
+        {/* Demo Sections */}
+        <Demos
+          title='Real-time Metrics'
+          description="Watch your container metrics update in real-time, giving you instant insights into your system's performance."
+          // gifSrc='/videos/sysdashboard.gif' // doesn't work
+          gifSrc={`${import.meta.env.BASE_URL}videos/sysdashboard.gif`}
+        />
+        <Demos
+          title='AI-Powered Analysis'
+          description='Let our AI analyze your metrics and provide actionable insights to optimize your container performance.'
+          // gifSrc='/videos/awsbedrock.gif'
+          gifSrc={`${import.meta.env.BASE_URL}videos/awsbedrock.gif`}
+          reverse
+        />
+        <Demos
+          title='Kubernetes Visualization'
+          description='Visualize your Kubernetes infrastructure with interactive diagrams, making it easy to understand and manage your cluster.'
+          gifSrc={`${import.meta.env.BASE_URL}videos/kubernetes.gif`}
+        />
+        <Demos
+          title='One-Click Management'
+          description='Manage your containers with ease using our intuitive one-click actions for starting, stopping, and restarting.'
+          gifSrc={`${import.meta.env.BASE_URL}videos/manager.gif`}
+          reverse
+        />
 
         {/* Team section ---------------------------------------------------------------------------- */}
         <Container
