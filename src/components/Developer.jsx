@@ -10,11 +10,11 @@ import PropTypes from 'prop-types';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
-import brianPhoto from '../assets/brian.png';
-import dariusPhoto from '../assets/darius.png';
-import jasenPhoto from '../assets/jasen.png';
-import kaiPhoto from '../assets/kai.png';
-import santiagoPhoto from '../assets/santiago.png';
+import brianPhoto from '../assets/Brian.png';
+import dariusPhoto from '../assets/Darius.png';
+import jasenPhoto from '../assets/Jasen.png';
+import kaiPhoto from '../assets/Kai.png';
+import santiagoPhoto from '../assets/Santiago.png';
 
 export const developers = [
   {
