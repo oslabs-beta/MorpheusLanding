@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   AppBar,
   Toolbar,
@@ -7,11 +6,17 @@ import {
   Container,
   Box,
   Paper,
+  Link,
+  IconButton,
 } from '@mui/material';
 import { styled, keyframes } from '@mui/system';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { alpha } from '@mui/material/styles';
+import Developer, { developers } from './components/Developer';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Logo from './assets/16.svg';
 // import { useRef } from 'react';
 
 const theme = createTheme({
@@ -27,12 +32,12 @@ const TransparentAppBar = styled(AppBar)(({ theme }) => ({
   borderBottom: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
   color: theme.palette.text.primary,
   '& .MuiToolbar-root': {
-    minHeight: '48px', // Adjust this value to your desired height
+    minHeight: '72px', // Adjust this value to your desired height
     '@media (min-width:0px) and (orientation: landscape)': {
-      minHeight: '48px',
+      minHeight: '72px',
     },
     '@media (min-width:600px)': {
-      minHeight: '48px',
+      minHeight: '72px',
     },
   },
 }));
@@ -75,42 +80,31 @@ const FloatingLogo = styled('img')({
 });
 
 function App() {
-  // const demoRef = useRef(null);
-
-  // const scrollToDemo = (event) => {
-  //   event.preventDefault();
-  //   const yOffset = -80; // Adjust this value based on your navbar height
-  //   const element = demoRef.current;
-  //   const y =
-  //     element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-  //   window.scrollTo({ top: y, behavior: 'smooth' });
-  // };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <GradientBackground>
         <FloatingLogo
-          src='./16.svg'
+          src={Logo}
           style={{
             top: '10%',
-            left: '5%',
+            right: '10%',
             width: '100px',
             animationDuration: '15s',
           }}
         />
         <FloatingLogo
-          src='./16.svg'
+          src={Logo}
           style={{
             top: '30%',
-            right: '10%',
+            left: '5%',
             width: '80px',
             animationDuration: '20s',
             animationDelay: '-5s',
           }}
         />
         <FloatingLogo
-          src='./16.svg'
+          src={Logo}
           style={{
             bottom: '15%',
             left: '15%',
@@ -121,24 +115,73 @@ function App() {
         />
         <TransparentAppBar position='fixed'>
           <Toolbar>
-            <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+            <img
+              src={Logo}
+              alt='Logo'
+              style={{ width: '60px', height: '60px', marginRight: '8px' }}
+            />
+            <Typography
+              variant='h6'
+              component='div'
+              sx={{ flexGrow: 1, fontSize: '1.6rem' }}
+            >
               morpheus
             </Typography>
-            <Button color='inherit' href='#'>
+            <Button color='inherit' href='#' sx={{ fontSize: '1.1rem', mx: 1 }}>
               Home
             </Button>
-            <Button color='inherit' href='#demo'>
-              Demo
+            <Button
+              color='inherit'
+              href='#demo'
+              sx={{ fontSize: '1.1rem', mx: 1 }}
+            >
+              Features
             </Button>
-            <Button color='inherit' href='#about'>
-              About
+            <Button
+              color='inherit'
+              href='#team'
+              sx={{ fontSize: '1.1rem', mx: 1 }}
+            >
+              Team
             </Button>
+
+            <IconButton
+              color='inherit'
+              href='https://github.com/oslabs-beta/Morpheus'
+              target='_blank'
+              rel='noopener noreferrer'
+              sx={{ ml: 1.5 }}
+            >
+              <GitHubIcon />
+            </IconButton>
+            <IconButton
+              color='inherit'
+              href='#' // Temporary LinkedIn placeholder ------------------------------------------------------------------
+              target='_blank'
+              rel='noopener noreferrer'
+              sx={{ ml: 2.5, mr: 1.5 }}
+            >
+              <LinkedInIcon />
+            </IconButton>
           </Toolbar>
         </TransparentAppBar>
 
-        <Container maxWidth='lg' sx={{ mt: 14, mb: 11 }}>
+        <Container
+          maxWidth='lg'
+          sx={{
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
           {/* <GlassyBox> */}
-          <Typography variant='h1' component='h1' gutterBottom>
+          <Typography
+            variant='h1'
+            component='h1'
+            gutterBottom
+            sx={{ fontWeight: 'bold' }}
+          >
             {/* Chrysalis to Clarity <br /> */}
             AI-enhanced container observability
           </Typography>
@@ -154,7 +197,22 @@ function App() {
             Bedrock and OpenAI models of your choice, transforming insights into
             actionable intelligence.
           </Typography>
-          <Button variant='contained' color='primary' size='large'>
+          <Button
+            href='https://github.com/oslabs-beta/Morpheus'
+            target='_blank'
+            rel='noopener noreferrer'
+            variant='contained'
+            size='large'
+            sx={{
+              backgroundColor: alpha('#9C27B0', 0.6), // Light purple with 60% opacity
+              color: 'white',
+              '&:hover': {
+                backgroundColor: alpha('#9C27B0', 0.8), // Darker on hover
+              },
+              alignSelf: 'flex-start', // Aligns the button to the start of the flex container
+              mt: 2, // Adds some top margin
+            }}
+          >
             Get Started
           </Button>
           {/* </GlassyBox> */}
@@ -203,18 +261,54 @@ function App() {
 
         <Box flexGrow={1} />
 
-        <Container maxWidth='md' sx={{ mt: 5, mb: 8 }}>
-          <GlassyBox id='about'>
-            <Typography variant='h4' component='h2' gutterBottom>
-              About DevTool
-            </Typography>
-            <Typography variant='body1' paragraph>
-              DevTool was created by developers, for developers. Our mission is
-              to provide a comprehensive set of tools that enhance productivity
-              and simplify complex tasks.
-            </Typography>
-          </GlassyBox>
+        <Container
+          maxWidth={false}
+          sx={{ width: '100%', maxWidth: '2000px', mt: 5, mb: 8, mx: 'auto' }}
+        >
+          <Typography
+            id='team'
+            variant='h4'
+            component='h2'
+            gutterBottom
+            sx={{ textAlign: 'center', mb: 4, fontWeight: 'bold' }}
+          >
+            Meet the Developers
+          </Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center', // Changed back from 'space-around' to 'center'
+              flexWrap: 'wrap',
+              gap: 2, // Reduced gap for a more compact layout
+            }}
+          >
+            {developers.map((dev) => (
+              <Developer key={dev.name} {...dev} />
+            ))}
+          </Box>
         </Container>
+        <Box
+          component='footer'
+          sx={{
+            py: 3,
+            px: 2,
+            mt: 'auto',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            backdropFilter: 'blur(10px)',
+          }}
+        >
+          <Typography variant='body2' color='text.secondary' align='center'>
+            © 2024 Morpheus | Developed at OSLabs |
+            <Link
+              color='inherit'
+              href='https://opensource.org/licenses/MIT'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              {' MIT License'}
+            </Link>
+          </Typography>
+        </Box>
       </GradientBackground>
     </ThemeProvider>
   );
