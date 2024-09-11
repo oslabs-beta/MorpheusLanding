@@ -57,9 +57,9 @@ export const developers = [
 const Developer = ({ name, email, github, linkedin, photo }) => (
   <Card
     sx={{
-      maxWidth: 250,
-      minWidth: 220,
-      m: 2,
+      maxWidth: 205,
+      minWidth: 200,
+      m: 1,
       textAlign: 'center',
       backgroundColor: 'rgba(255, 255, 255, 0.6)',
       backdropFilter: 'blur(5px)',

@@ -18,7 +18,6 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Logo from './assets/4.svg'; // Floating logo
 import LogoWithText from './assets/11.svg'; // Nav bar logo with text
-import { useState, useEffect, useRef } from 'react';
 
 const theme = createTheme({
   typography: {
@@ -78,7 +77,7 @@ const float = keyframes`
 
 const FloatingLogo = styled('img')({
   position: 'absolute',
-  opacity: 0.4,
+  opacity: 0.6,
   animation: `${float} 8s infinite ease-in-out`,
   transition: 'all 0.3s ease-in-out',
   '&:hover': {
@@ -101,33 +100,6 @@ const AnimatedContainer = styled(Container)`
 `;
 
 function App() {
-  const [isVisible, setIsVisible] = useState(false);
-  const featuresRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px',
-      }
-    );
-
-    if (featuresRef.current) {
-      observer.observe(featuresRef.current);
-    }
-
-    return () => {
-      if (featuresRef.current) {
-        observer.unobserve(featuresRef.current);
-      }
-    };
-  }, []);
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -311,32 +283,13 @@ function App() {
         </Container>
 
         {/* Features section ------------------------------------------------------------------------ */}
-        <AnimatedContainer
+        <Container
           id='features'
           maxWidth='lg'
           sx={{
             py: 5,
             mb: 30,
             scrollMarginTop: '80px',
-          }}
-          ref={(el) => {
-            if (!el) return;
-            const observer = new IntersectionObserver(
-              ([entry]) => {
-                if (entry.isIntersecting) {
-                  el.classList.add('visible');
-                } else {
-                  el.classList.remove('visible');
-                }
-              },
-              {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px',
-              }
-            );
-            observer.observe(el);
-
-            return () => observer.unobserve(el);
           }}
         >
           <Typography
@@ -347,67 +300,135 @@ function App() {
           >
             An All-in-One Solution
           </Typography>
-
-          <Box sx={{ mb: 6, maxWidth: '1000px', mx: 'auto' }}>
-            <Typography
-              variant='h5'
-              component='h3'
-              gutterBottom
-              sx={{ textAlign: 'center' }}
-            >
-              Know your whats, whens, and whys. Morpheus combines powerful
-              observability features to not only give you real-time and
-              historical metrics, but also in-depth understanding of this data.
-              Whether you are a seasoned DevOps professional or just starting
-              with containerization, Morpheus provides the insights and control
-              you need to optimize your workflow.
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: 4,
+          <AnimatedContainer
+            ref={(el) => {
+              if (!el) return;
+              const observer = new IntersectionObserver(
+                ([entry]) => {
+                  if (entry.isIntersecting) {
+                    el.classList.add('visible');
+                  } else {
+                    el.classList.remove('visible');
+                  }
+                },
+                {
+                  threshold: 0.1,
+                  rootMargin: '0px 0px -100px 0px',
+                }
+              );
+              observer.observe(el);
+              return () => observer.disconnect();
             }}
           >
-            <GlassyBox sx={{ flex: '1 1 300px', maxWidth: '400px' }}>
-              <Typography variant='h5' component='h3' gutterBottom>
-                Container Metrics Dashboard
+            <Box sx={{ mb: 6, maxWidth: '1000px', mx: 'auto' }}>
+              <Typography
+                variant='h5'
+                component='h3'
+                gutterBottom
+                sx={{ textAlign: 'center' }}
+              >
+                Know your whats, whens, and whys. Morpheus combines powerful
+                observability features to not only give you real-time and
+                historical metrics, but also in-depth understanding of this
+                data. Whether you are a seasoned DevOps professional or just
+                starting with containerization, Morpheus provides the insights
+                and control you need to optimize your workflow.
               </Typography>
-              <Typography variant='body1' paragraph>
-                Monitor essential container metrics on a sleek, intuitive
-                dashboard for real-time insights into your Docker and Kubernetes
-                environments.
-              </Typography>
-            </GlassyBox>
-            <GlassyBox sx={{ flex: '1 1 300px', maxWidth: '400px' }}>
-              <Typography variant='h5' component='h3' gutterBottom>
-                One-Click Container Management
-              </Typography>
-              <Typography variant='body1' paragraph>
-                Effortlessly manage your containers with easy-to-use, one-click
-                actions for starting, stopping, and restarting containers.
-              </Typography>
-            </GlassyBox>
-            <GlassyBox sx={{ flex: '1 1 300px', maxWidth: '400px' }}>
-              <Typography variant='h5' component='h3' gutterBottom>
-                AI-Powered Analysis
-              </Typography>
-              <Typography variant='body1' paragraph>
-                Leverage advanced AI interactions with models provided through
-                AWS Bedrock and OpenAI models to transform insights into
-                actionable intelligence.
-              </Typography>
-            </GlassyBox>
-          </Box>
-        </AnimatedContainer>
+            </Box>
+
+            <Box
+              sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: 4,
+              }}
+            >
+              <GlassyBox
+                sx={{
+                  flex: '1 1 calc(50% - 2rem)',
+                  minWidth: '300px',
+                  maxWidth: 'calc(50% - 2rem)',
+                }}
+              >
+                <Typography variant='h5' component='h3' gutterBottom>
+                  Container and System Metrics Dashboards
+                </Typography>
+                <Typography variant='body1' paragraph>
+                  Monitor essential container metrics on sleek, intuitive
+                  dashboards for real-time insights into your Docker and
+                  Kubernetes environments.
+                </Typography>
+              </GlassyBox>
+
+              <GlassyBox
+                sx={{
+                  flex: '1 1 calc(50% - 2rem)',
+                  minWidth: '300px',
+                  maxWidth: 'calc(50% - 2rem)',
+                }}
+              >
+                <Typography variant='h5' component='h3' gutterBottom>
+                  AI-Powered Analysis
+                </Typography>
+                <Typography variant='body1' paragraph>
+                  Leverage AI interactions with models provided through AWS
+                  Bedrock and OpenAI models to gain insights into your data.
+                  Previous interactions with the LLMs are stored, enabling
+                  models to reference older conversations.
+                </Typography>
+              </GlassyBox>
+
+              <GlassyBox
+                sx={{
+                  flex: '1 1 calc(50% - 2rem)',
+                  minWidth: '300px',
+                  maxWidth: 'calc(50% - 2rem)',
+                }}
+              >
+                <Typography variant='h5' component='h3' gutterBottom>
+                  One-Click Container Management
+                </Typography>
+                <Typography variant='body1' paragraph>
+                  Effortlessly manage your containers with easy-to-use,
+                  one-click actions for starting, stopping, and restarting
+                  containers.
+                </Typography>
+              </GlassyBox>
+
+              <GlassyBox
+                sx={{
+                  flex: '1 1 calc(50% - 2rem)',
+                  minWidth: '300px',
+                  maxWidth: 'calc(50% - 2rem)',
+                }}
+              >
+                <Typography variant='h5' component='h3' gutterBottom>
+                  Kubernetes Visualization
+                </Typography>
+                <Typography variant='body1' paragraph>
+                  Gain a clear overview of your Kubernetes infrastructure with
+                  interactive visualizations. Easily view and manage nodes,
+                  pods, deployments, and clusters, including their names and
+                  relationships, for enhanced cluster management and
+                  troubleshooting.
+                </Typography>
+              </GlassyBox>
+            </Box>
+          </AnimatedContainer>
+        </Container>
 
         {/* Team section ---------------------------------------------------------------------------- */}
         <Container
           maxWidth={false}
-          sx={{ width: '100%', maxWidth: '1500px', mt: 4, mb: 50, mx: 'auto' }}
+          sx={{
+            width: '100vw',
+            maxWidth: '100%!important',
+            mt: 4,
+            mb: 20,
+            mx: 0,
+            px: 0,
+          }}
         >
           <Typography
             id='team'
@@ -416,7 +437,6 @@ function App() {
             gutterBottom
             sx={{
               textAlign: 'center',
-
               fontWeight: 'bold',
               py: 5,
               scrollMarginTop: '80px',
@@ -424,18 +444,41 @@ function App() {
           >
             Meet the Developers
           </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              gap: 2,
+
+          <AnimatedContainer
+            ref={(el) => {
+              if (!el) return;
+              const observer = new IntersectionObserver(
+                ([entry]) => {
+                  if (entry.isIntersecting) {
+                    el.classList.add('visible');
+                  } else {
+                    el.classList.remove('visible');
+                  }
+                },
+                {
+                  threshold: 0.1,
+                  rootMargin: '0px 0px -100px 0px',
+                }
+              );
+              observer.observe(el);
+              return () => observer.disconnect();
             }}
           >
-            {developers.map((dev) => (
-              <Developer key={dev.name} {...dev} />
-            ))}
-          </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: 2,
+                width: '100%',
+              }}
+            >
+              {developers.map((dev) => (
+                <Developer key={dev.name} {...dev} />
+              ))}
+            </Box>
+          </AnimatedContainer>
         </Container>
 
         {/* Footer ---------------------------------------------------------------------------------- */}
