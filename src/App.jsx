@@ -423,31 +423,42 @@ function App() {
           </AnimatedContainer>
         </Container>
 
-        {/* Demo Sections */}
-        <Demos
-          title='Real-time Metrics'
-          description="Watch your container metrics update in real-time, giving you instant insights into your system's performance."
-          // gifSrc='/videos/sysdashboard.gif' // doesn't work
-          gifSrc={`${import.meta.env.BASE_URL}videos/sysdashboard.gif`}
-        />
-        <Demos
-          title='AI-Powered Analysis'
-          description='Let our AI analyze your metrics and provide actionable insights to optimize your container performance.'
-          // gifSrc='/videos/awsbedrock.gif'
-          gifSrc={`${import.meta.env.BASE_URL}videos/awsbedrock.gif`}
-          reverse
-        />
-        <Demos
-          title='Kubernetes Visualization'
-          description='Visualize your Kubernetes infrastructure with interactive diagrams, making it easy to understand and manage your cluster.'
-          gifSrc={`${import.meta.env.BASE_URL}videos/kubernetes.gif`}
-        />
-        <Demos
-          title='One-Click Management'
-          description='Manage your containers with ease using our intuitive one-click actions for starting, stopping, and restarting.'
-          gifSrc={`${import.meta.env.BASE_URL}videos/manager.gif`}
-          reverse
-        />
+        {/* Demo Sections ---------------------------------------------------------------------------------*/}
+        <Box id='demos' sx={{ scrollMarginTop: '80px' }}>
+          <Typography
+            variant='h3'
+            component='h2'
+            gutterBottom
+            sx={{ textAlign: 'center', mb: 4, fontWeight: 'bold', pt: 5 }}
+          >
+            Morpheus in Action
+          </Typography>
+
+          <Demos
+            title='Real-time Metrics'
+            description="Watch your container metrics update in real-time, giving you instant insights into your system's performance."
+            // gifSrc='/videos/sysdashboard.gif' // doesn't work
+            gifSrc={`${import.meta.env.BASE_URL}videos/sysdashboard.gif`}
+          />
+          <Demos
+            title='AI-Powered Analysis'
+            description='Let our AI analyze your metrics and provide actionable insights to optimize your container performance.'
+            // gifSrc='/videos/awsbedrock.gif'
+            gifSrc={`${import.meta.env.BASE_URL}videos/awsbedrock.gif`}
+            reverse
+          />
+          <Demos
+            title='Kubernetes Visualization'
+            description='Visualize your Kubernetes infrastructure with interactive diagrams, making it easy to understand and manage your cluster.'
+            gifSrc={`${import.meta.env.BASE_URL}videos/kubernetes.gif`}
+          />
+          <Demos
+            title='One-Click Management'
+            description='Manage your containers with ease using our intuitive one-click actions for starting, stopping, and restarting.'
+            gifSrc={`${import.meta.env.BASE_URL}videos/manager.gif`}
+            reverse
+          />
+        </Box>
 
         {/* Team section ---------------------------------------------------------------------------- */}
         <Container
