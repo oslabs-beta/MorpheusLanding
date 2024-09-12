@@ -19,10 +19,14 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import Logo from './assets/12.svg'; // Floating logo
 import LogoWithText from './assets/11.svg'; // Nav bar logo with text
+import '@fontsource/montserrat/300.css'; // Light
+import '@fontsource/montserrat/400.css'; // Regular
+import '@fontsource/montserrat/500.css'; // Medium
+// import '@fontsource/montserrat/700.css'; // Bold
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Avenir, sans-serif',
+    fontFamily: 'Avenir, Montserrat',
   },
 });
 
@@ -186,6 +190,13 @@ function App() {
             </Button>
             <Button
               color='inherit'
+              href='#demos'
+              sx={{ fontSize: '1.1rem', mx: 1, color: '#004aad' }}
+            >
+              Demo
+            </Button>
+            <Button
+              color='inherit'
               href='#team'
               sx={{ fontSize: '1.1rem', mx: 1, color: '#004aad' }}
             >
@@ -203,7 +214,7 @@ function App() {
             </IconButton>
             <IconButton
               color='inherit'
-              href='#' // Temporary Morpheus LinkedIn placeholder ---------------------------------------------------------------------------------------
+              href='https://www.linkedin.com/company/morpheus-dev'
               target='_blank'
               rel='noopener noreferrer'
               sx={{ ml: 2.5, mr: 1.5, color: '#004aad' }}
@@ -303,7 +314,7 @@ function App() {
             gutterBottom
             sx={{ textAlign: 'center', mb: 4, fontWeight: 'bold' }}
           >
-            An All-in-One Solution
+            Your All-in-One Solution
           </Typography>
           <AnimatedContainer
             ref={(el) => {
@@ -337,7 +348,8 @@ function App() {
                 historical metrics, but also in-depth understanding of this
                 data. Whether you are a seasoned DevOps professional or just
                 starting with containerization, Morpheus provides the insights
-                and control you need to optimize your workflow.
+                and control you need to optimize your workflow. <br />
+                Scroll down to see Morpheus in action.
               </Typography>
             </Box>
 
@@ -357,12 +369,12 @@ function App() {
                 }}
               >
                 <Typography variant='h5' component='h3' gutterBottom>
-                  Container and System Metrics Dashboards
+                  Container Environment Dashboards
                 </Typography>
                 <Typography variant='body1' paragraph>
                   Monitor essential container metrics on sleek, intuitive
-                  dashboards for real-time insights into your Docker and
-                  Kubernetes environments.
+                  dashboards for both real-time and historical insights into
+                  your Docker and Kubernetes environments.
                 </Typography>
               </GlassyBox>
 
@@ -377,10 +389,10 @@ function App() {
                   AI-Powered Analysis
                 </Typography>
                 <Typography variant='body1' paragraph>
-                  Leverage AI interactions with models provided through AWS
+                  Leverage AI interactions with LLMs provided through AWS
                   Bedrock and OpenAI models to gain insights into your data.
-                  Previous interactions with the LLMs are stored, enabling
-                  models to reference older conversations.
+                  Previous interactions are stored, enabling models to reference
+                  older conversations.
                 </Typography>
               </GlassyBox>
 
@@ -397,7 +409,9 @@ function App() {
                 <Typography variant='body1' paragraph>
                   Effortlessly manage your containers with easy-to-use,
                   one-click actions for starting, stopping, and restarting
-                  containers.
+                  containers. Swiftly return to this control panel and take
+                  immediate action on any problematic containers identified
+                  during system evaluation.
                 </Typography>
               </GlassyBox>
 
@@ -412,11 +426,11 @@ function App() {
                   Kubernetes Visualization
                 </Typography>
                 <Typography variant='body1' paragraph>
-                  Gain a clear overview of your Kubernetes infrastructure with
-                  interactive visualizations. Easily view and manage nodes,
-                  pods, deployments, and clusters, including their names and
-                  relationships, for enhanced cluster management and
-                  troubleshooting.
+                  Bring your infrastructure to life. Visualize your Kubernetes
+                  ecosystem at a glance with this interactive diagram, making it
+                  easy to understand and manage your clusters. Identify nodes,
+                  pods, deployments, and clusters, and grasp relationships
+                  quickly.
                 </Typography>
               </GlassyBox>
             </Box>
@@ -424,39 +438,45 @@ function App() {
         </Container>
 
         {/* Demo Sections ---------------------------------------------------------------------------------*/}
-        <Box id='demos' sx={{ scrollMarginTop: '80px' }}>
-          <Typography
-            variant='h3'
-            component='h2'
-            gutterBottom
-            sx={{ textAlign: 'center', mb: 4, fontWeight: 'bold', pt: 5 }}
-          >
-            Morpheus in Action
-          </Typography>
-
+        <Box id='demos' sx={{ scrollMarginTop: '25vh' }}>
           <Demos
             title='Real-time Metrics'
-            description="Watch your container metrics update in real-time, giving you instant insights into your system's performance."
-            // gifSrc='/videos/sysdashboard.gif' // doesn't work
+            description="Watch your container environment metrics update in real-time, giving you an instant overview of your system's performance."
+            // gifSrc='/videos/sysdashboard.gif' // doesn't work, need to use base URL
             gifSrc={`${import.meta.env.BASE_URL}videos/sysdashboard.gif`}
           />
           <Demos
-            title='AI-Powered Analysis'
-            description='Let our AI analyze your metrics and provide actionable insights to optimize your container performance.'
-            // gifSrc='/videos/awsbedrock.gif'
+            title='Container Analysis with Powerful AWS Bedrock Models'
+            description='Integration with AWS Bedrock models, such as Anthropic Claude, delivers in-depth evaluation of your container performance. Quickly identify optimization opportunities, troubleshoot issues, and make data-driven decisions to enhance your applications. To the right are dashboards that allow you to see the data being analyzed.'
             gifSrc={`${import.meta.env.BASE_URL}videos/awsbedrock.gif`}
             reverse
           />
           <Demos
-            title='Kubernetes Visualization'
-            description='Visualize your Kubernetes infrastructure with interactive diagrams, making it easy to understand and manage your cluster.'
+            title='Kubernetes Visualization with AI Chat Assistance'
+            description='Zoom and pan to focus on areas of interest. Select
+                  one of the three most popular OpenAI models to assist in
+                  analyzing your clusters. Ask about specific pods and their
+                  purpose, or about the high-level function of a cluster.'
             gifSrc={`${import.meta.env.BASE_URL}videos/kubernetes.gif`}
+          />
+
+          <Demos
+            title='Automatic Metric Tracking and Storage'
+            description='In the background, your container environment metrics are periodically stored, enabling comprehensive historical analysis and performance trend tracking. This includes data such as CPU usage, memory consumption, and network traffic, captured at regular intervals. This allows you to compare current performance against historical baselines, and identify recurring patterns or anomalies in resource usage.'
+            gifSrc={`${import.meta.env.BASE_URL}/dbmetrics.png`}
+            sx={{
+              '& img': {
+                maxHeight: '400px',
+                objectFit: 'contain',
+                objectPosition: 'top',
+              },
+            }}
+            reverse
           />
           <Demos
             title='One-Click Management'
-            description='Manage your containers with ease using our intuitive one-click actions for starting, stopping, and restarting.'
+            description='Simplify Docker container management with our clear start and stop controls, allowing you to toggle container states with a single click. No need to leave Morpheus.'
             gifSrc={`${import.meta.env.BASE_URL}videos/manager.gif`}
-            reverse
           />
         </Box>
 
@@ -535,7 +555,7 @@ function App() {
           }}
         >
           <Typography variant='body2' color='text.secondary' align='center'>
-            © 2024 Morpheus | Developed at OSLabs |
+            © 2024 Morpheus |
             <Link
               color='inherit'
               href='https://opensource.org/licenses/MIT'

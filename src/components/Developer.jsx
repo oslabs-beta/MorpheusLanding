@@ -28,7 +28,7 @@ export const developers = [
     name: 'Darius Teng',
     email: 'dariusyteng@gmail.com',
     github: 'https://github.com/dariusteng',
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/dariusteng/',
     photo: dariusPhoto,
   },
   {
